@@ -1,0 +1,15 @@
+francois.senis@worldline.com
+valentin.doulcier@worldline.com
+
+A faire 
+Prochaine  séance
+ - Emettre spécification + diag de classes
+ - Créer base de données utilisateurs
+ - Tester échange facture 
+ 
+Global
+- Sécurité : protéger données bancaires - demande prélèvement
+- Tests : 
+  - tests unitaires : tester chaque classe (création client, compte, facture, émission bilan comptable, etc)
+  - tests fonctionnels : 
+- Contrôle de code : vérifier que les méthodes sont en adéquation avec la spéc et maintenabilité
