@@ -16,22 +16,23 @@ import java.util.Date;
  */
 public class Utilisateur  {
    
+    private int _id; 
     private String _nom; 
     private String _prenom; 
     private String _adresse; 
-    private Compte _monCompte; 
-    private int _role; 
-    
-    
-    
-   
+    private ListeDeComptes _mesComptes; 
+    int _role; 
+    private final Dossier _monDossier; 
+       
     //COnstructeur
     public Utilisateur(){
-        _monCompte = new Compte();
+        _mesComptes.ajouterCompte(null);
+        _id=0;
         _nom = ""; 
         _prenom = ""; 
         _adresse=""; 
-        _role = Roles.COMMERCANT; //par défaut l'utilisateur est un commercant               
+        _role = Roles.COMMERCANT; //par défaut l'utilisateur est un commercant              
+        _monDossier=null; 
     }
     
     // En fonction de son rôle l'utilisateur accède à différentes fonctionalités 
@@ -45,6 +46,20 @@ public class Utilisateur  {
         //Si le récepteur est connu, on associe la facture à son compte 
         /* Checker la base de données utilisateurs */  
     }
+    
+    public void demanderPrelevementComptePricincipal(double _montant, int idDuProprietaire){
+        // Si l'utilisateur est autorisé à prélever
+        //if(****************)
+        // SI le compte existe
+        Utilisateur aDebiter = new Utilisateur();
+        aDebiter._id=idDuProprietaire; 
+        Compte compteADebiter = aDebiter._mesComptes.getComptePrincipal();
+        compteADebiter.setMontantCourant(-(_montant));
+        Compte compteACrediter=this._mesComptes.getComptePrincipal();
+         compteACrediter.setMontantCourant(_montant);
+    }
+    
+    
     
     // Getters & Setters
     public String getNom() {
@@ -71,13 +86,7 @@ public class Utilisateur  {
         this._adresse = _adresse;
     }
 
-    public Compte getMonCompte() {
-        return _monCompte;
-    }
-
-    public void setMonCompte(Compte _monCompte) {
-        this._monCompte = _monCompte;
-    }
+ 
 
     public int getRole() {
         return _role;
@@ -86,6 +95,20 @@ public class Utilisateur  {
     public void setRole(int _role) {
         this._role = _role;
     }
-   
+   public int getId() {
+        return _id;
+    }
+
+    public void setId(int _id) {
+        this._id = _id;
+    }
+
+    public ListeDeComptes getMesComptes() {
+        return _mesComptes;
+    }
+
+    public void setMesComptes(ListeDeComptes _mesComptes) {
+        this._mesComptes = _mesComptes;
+    }
     
 }

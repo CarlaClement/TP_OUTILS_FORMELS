@@ -15,12 +15,14 @@ public class Facture {
     private double _montant; 
     private String _emetteur; 
     private String _recepteur; 
+    private int _id; 
     
     public Facture(){
         _date=""; 
         _montant=0.0; 
         _emetteur=null; 
         _recepteur=null; 
+        _id=0; 
                 
     }
     
@@ -30,6 +32,7 @@ public class Facture {
         _emetteur=emetteur; 
         _recepteur=recepteur;     
     }
+    
     // Getters & Setters
     public String getDate() {
         return _date;

@@ -12,4 +12,12 @@ package tp_outils_formel;
  */
 public class Comptable extends Utilisateur{
     
+    public Comptable(){
+      _role=1; 
+    }
+    
+    public void creerDossier(){
+        
+    }
+       
 }

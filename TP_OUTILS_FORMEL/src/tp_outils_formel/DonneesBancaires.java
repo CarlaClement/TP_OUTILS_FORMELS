@@ -13,9 +13,13 @@ package tp_outils_formel;
 public class DonneesBancaires {
     private String _iban;    
     private String _bic; 
-    private Utilisateur _owner;
+    //private Utilisateur _owner;
     
-
+public DonneesBancaires(String iban, String bic){
+    _iban=iban; 
+    _bic=bic; 
+   // _owner=owner; 
+}
 
 //Getters & Setters
     public String getIban() {
@@ -33,7 +37,7 @@ public class DonneesBancaires {
     public void setBic(String _bic) {
         this._bic = _bic;
     }
-
+/*
     public Utilisateur getOwner() {
         return _owner;
     }
@@ -41,5 +45,5 @@ public class DonneesBancaires {
     public void setOwner(Utilisateur _owner) {
         this._owner = _owner;
     }
-  
+  */
 }

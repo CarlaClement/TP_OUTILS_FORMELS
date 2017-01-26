@@ -22,4 +22,7 @@ public class ListeDeFactures{
     public void ajouterFacture(Facture maFacture){
         _listeFactures.add(maFacture); 
     }
+     public void supprimerFacture(Facture maFacture){
+        _listeFactures.remove(maFacture); 
+    }
 }
