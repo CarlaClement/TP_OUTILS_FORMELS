@@ -18,31 +18,26 @@ public class TP_OUTILS_FORMEL {
         // TODO code application logic here
         
         // Commercant
-        Utilisateur monCommmercant = new Commercant(); 
-        monCommmercant.setNom("Dupond");
+        
+        /*monCommmercant.setNom("Dupond");
         monCommmercant.setPrenom("Paul");
-        monCommmercant.setId(3);
-        ListeDeComptes lescomptesducommercant = monCommmercant.getMesComptes();
-        String ibanComm = "caca"; 
-        String bicComm = "pipi"; 
-        DonneesBancaires DonnesComm = new DonneesBancaires(ibanComm, bicComm); 
-        Compte comptePrinc = new Compte(1232.23, DonnesComm);
-        lescomptesducommercant.setComptePrincipal(comptePrinc);
-        //System.out.println(" Commercant : "+monCommmercant.getNom()+' '+ monCommmercant.getPrenom() +' , id : '+ monCommmercant.getId()+ "montant compte princ ");
-        
+        monCommmercant.setId(3);*/
+       // ListeDeComptes lescomptesducommercant = new ListeDeComptes();
+        Utilisateur monCommmercant = new Utilisateur(3,"Dupond","Paul", " ",0); 
+       // System.out.println(" Commercant : "+monCommmercant.getNom()+" "+ monCommmercant.getPrenom()+" , id : ");//+ monCommmercant.getMontantComptePrincipal()+ "\n");
+        System.out.println(monCommmercant.recupererInfosUtilisateur());
         // Comptable
-        Utilisateur monComptable = new Comptable(); 
-        monComptable.setNom("Martin");
-        monComptable.setPrenom("Pierre");
-        monComptable.setId(5);
-        ListeDeComptes lescomptesducomptable = monComptable.getMesComptes();
-        String ibanCompt = "caca"; 
-        String bicCompt = "pipi"; 
-        DonneesBancaires DonnesCompt = new DonneesBancaires(ibanCompt, bicCompt); 
-        Compte comptePrincCompt = new Compte(32.50, DonnesCompt);
+      /*  ListeDeComptes lescomptesducomptable = new ListeDeComptes();
+        Utilisateur monComptable = new Utilisateur(5,"Martin","Pierre"," ", lescomptesducomptable, 1); 
+        DonneesBancaires DonnesCompt = new DonneesBancaires("popo2", "caca23f"); 
+        Compte comptePrincCompt = new Compte(32.25, DonnesCompt);
         lescomptesducomptable.setComptePrincipal(comptePrincCompt);
+        System.out.println(" Comptable : "+monComptable.getNom()+" "+ monComptable.getPrenom()+" , id : "+monComptable.getId()+ "montant compte princ " +comptePrincCompt.getMontantCourant()+ "\n");
         
         
+        monCommmercant.demanderPrelevementComptePricincipal(36.50, monComptable);
+        System.out.println(" Nouveaux montant : Commercant : "+ comptePrinc.getMontantCourant() + "  , Comptable "+ comptePrincCompt.getMontantCourant()+"\n ");
+        */
         
         
     }

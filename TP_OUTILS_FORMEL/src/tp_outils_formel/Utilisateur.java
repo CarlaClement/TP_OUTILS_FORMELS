@@ -15,6 +15,8 @@ import java.util.Date;
  * @author Administrateur
  */
 public class Utilisateur  {
+
+    
    
     private int _id; 
     private String _nom; 
@@ -25,8 +27,9 @@ public class Utilisateur  {
     private final Dossier _monDossier; 
        
     //COnstructeur
+    
     public Utilisateur(){
-        _mesComptes.ajouterCompte(null);
+        _mesComptes=null;
         _id=0;
         _nom = ""; 
         _prenom = ""; 
@@ -34,7 +37,14 @@ public class Utilisateur  {
         _role = Roles.COMMERCANT; //par défaut l'utilisateur est un commercant              
         _monDossier=null; 
     }
-    
+    public Utilisateur(int _id, String _nom, String _prenom, String _adresse, int _role) {
+        this._id = _id;
+        this._nom = _nom;
+        this._prenom = _prenom;
+        this._adresse = _adresse;
+        this._role = _role;
+         _monDossier=null;
+    }
     // En fonction de son rôle l'utilisateur accède à différentes fonctionalités 
     //Méthodes globales à tous les utilisateurs: 
     public Facture emettreFacture(String recepteur, double montant){
@@ -47,19 +57,27 @@ public class Utilisateur  {
         /* Checker la base de données utilisateurs */  
     }
     
-    public void demanderPrelevementComptePricincipal(double _montant, int idDuProprietaire){
+    public void demanderPrelevementComptePricincipal(double _montant, Utilisateur user){//int idDuProprietaire){
         // Si l'utilisateur est autorisé à prélever
         //if(****************)
         // SI le compte existe
-        Utilisateur aDebiter = new Utilisateur();
-        aDebiter._id=idDuProprietaire; 
-        Compte compteADebiter = aDebiter._mesComptes.getComptePrincipal();
-        compteADebiter.setMontantCourant(-(_montant));
+       // Utilisateur aDebiter = new Utilisateur();
+        //aDebiter._id=idDuProprietaire; 
+        Compte compteADebiter = user._mesComptes.getComptePrincipal();
+        double temp = compteADebiter.getMontantCourant(); 
+        compteADebiter.setMontantCourant((temp - _montant));
         Compte compteACrediter=this._mesComptes.getComptePrincipal();
-         compteACrediter.setMontantCourant(_montant);
+        temp = compteACrediter.getMontantCourant(); 
+         compteACrediter.setMontantCourant((_montant+temp));
     }
     
+    public double getMontantComptePrincipal(){
+        return this._mesComptes.getComptePrincipal().getMontantCourant();    
+    }
     
+    public String recupererInfosUtilisateur(){
+        return ("Utilisateur "+ _role +", N°"+ this._id+" , "+ _nom+" "+_prenom+", adresse : "+_adresse+ " \n"); 
+    }
     
     // Getters & Setters
     public String getNom() {

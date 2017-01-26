@@ -15,12 +15,14 @@ import java.util.ArrayList;
 public class ListeDeComptes {
      private final ArrayList<Compte> _listeDeComptes; 
      private Compte _comptePrincipal; 
-     private int idProprietaire; 
+     private  int _idProprietaire; 
 
     //Constructeur 
-    public ListeDeComptes(){
+    public ListeDeComptes(int id){
         _listeDeComptes=new ArrayList<>(); 
-        _listeDeComptes.add(_comptePrincipal);
+        _listeDeComptes.add(new Compte());
+        _comptePrincipal = _listeDeComptes.get(0);
+        _idProprietaire=id; 
     }
     
     public void ajouterCompte(Compte monCompte){
@@ -30,6 +32,15 @@ public class ListeDeComptes {
         _listeDeComptes.remove(monCompte);
     }
     
+    public void setMontantComptePrincipal(double _montant){
+        _comptePrincipal.setMontantCourant(_montant);
+    }
+    
+    public void setDonnesComptePrincipal(String _iban, String _bic){
+        DonneesBancaires mesDonnees;
+         mesDonnees = new DonneesBancaires(_iban, _bic);
+        _comptePrincipal.setMesDonnesBancaires(mesDonnees);
+    }
     // Getters & Setters
     public Compte getComptePrincipal() {
         return _comptePrincipal;
@@ -40,10 +51,10 @@ public class ListeDeComptes {
     }
 
     public int getIdProprietaire() {
-        return idProprietaire;
+        return _idProprietaire;
     }
 
     public void setIdProprietaire(int idProprietaire) {
-        this.idProprietaire = idProprietaire;
+        _idProprietaire = idProprietaire;
     }
 }
