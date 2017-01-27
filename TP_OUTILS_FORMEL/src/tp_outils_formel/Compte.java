@@ -14,19 +14,22 @@ public class Compte {
 
     private double _montantCourant; 
     private DonneesBancaires  _mesDonnesBancaires; 
+    private int _id; 
     
     //Constructeur 
     public Compte() {
         _montantCourant = 0.0;
-        _mesDonnesBancaires = null;
+        _mesDonnesBancaires = new DonneesBancaires();
+        _id=0; 
     }
-    public Compte(double montant, DonneesBancaires donnees) {
+    public Compte(double montant, DonneesBancaires donnees, int id) {
         _montantCourant = montant;
         _mesDonnesBancaires = donnees;
+        _id=id; 
     }    
     public void modifierDonneesBancaires(String _newBic, String _newIban){
-        this._mesDonnesBancaires.setBic(_newBic);
-        this._mesDonnesBancaires.setIban(_newIban);
+        _mesDonnesBancaires.setBic(_newBic);
+        _mesDonnesBancaires.setIban(_newIban);
     }
     
     // Getters & Setters

@@ -44,10 +44,10 @@ public class Utilisateur  {
     }
     // En fonction de son rôle l'utilisateur accède à différentes fonctionalités 
     //Méthodes globales à tous les utilisateurs: 
-    public Facture emettreFacture(String recepteur, double montant){
+    public Facture emettreFacture(int idRecepteur, double montant){
         Date dateDuJour = new Date(); 
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        return new Facture(dateFormat.format(dateDuJour), montant, recepteur,_nom+_prenom);
+        return new Facture(dateFormat.format(dateDuJour), montant, this._id, idRecepteur);
         
         //Contrôles
         //Si le récepteur est connu, on associe la facture à son compte 
@@ -71,7 +71,9 @@ public class Utilisateur  {
     public double getMontantComptePrincipal(){
         return this._mesComptes.getComptePrincipal().getMontantCourant();    
     }
-    
+     public void setMontantComptePrincipal(double montant){
+         this._mesComptes.getComptePrincipal().setMontantCourant(montant);    
+    }
     public String recupererInfosUtilisateur(){
         return ("Utilisateur "+getRole(_role) +", N°"+ this._id+" , "+ _nom+" "+_prenom+", adresse : "+_adresse+ " \n"); 
     }
