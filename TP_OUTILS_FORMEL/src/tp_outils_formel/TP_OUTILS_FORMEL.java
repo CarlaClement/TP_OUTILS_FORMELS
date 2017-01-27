@@ -23,9 +23,13 @@ public class TP_OUTILS_FORMEL {
         monCommmercant.setPrenom("Paul");
         monCommmercant.setId(3);*/
        // ListeDeComptes lescomptesducommercant = new ListeDeComptes();
-        Utilisateur monCommmercant = new Utilisateur(3,"Dupond","Paul", " ",0); 
+        Utilisateur monCommmercant = new Utilisateur(3,"Dupond","Paul", "25, Rue du Change, 37000 TOURS ",0); 
        // System.out.println(" Commercant : "+monCommmercant.getNom()+" "+ monCommmercant.getPrenom()+" , id : ");//+ monCommmercant.getMontantComptePrincipal()+ "\n");
         System.out.println(monCommmercant.recupererInfosUtilisateur());
+        //System.out.println(" Montant compte principal : " + monCommmercant.getMontantComptePrincipal());
+       /*ListeDeComptes tempC = monCommmercant.getMesComptes();
+       Compte t = tempC{0};
+        System.out.println(" montant : "+ monCommmercant.);*/ 
         // Comptable
       /*  ListeDeComptes lescomptesducomptable = new ListeDeComptes();
         Utilisateur monComptable = new Utilisateur(5,"Martin","Pierre"," ", lescomptesducomptable, 1); 
