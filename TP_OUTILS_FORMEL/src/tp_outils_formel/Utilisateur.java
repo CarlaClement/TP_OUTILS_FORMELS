@@ -15,9 +15,7 @@ import java.util.Date;
  * @author Administrateur
  */
 public class Utilisateur  {
-
-    
-   
+ 
     private int _id; 
     private String _nom; 
     private String _prenom; 
@@ -27,7 +25,6 @@ public class Utilisateur  {
     private final Dossier _monDossier; 
        
     //COnstructeur
-    
     public Utilisateur(){
         _mesComptes=null;
         _id=0;
@@ -76,7 +73,7 @@ public class Utilisateur  {
     }
     
     public String recupererInfosUtilisateur(){
-        return ("Utilisateur "+ _role +", N°"+ this._id+" , "+ _nom+" "+_prenom+", adresse : "+_adresse+ " \n"); 
+        return ("Utilisateur "+getRole(_role) +", N°"+ this._id+" , "+ _nom+" "+_prenom+", adresse : "+_adresse+ " \n"); 
     }
     
     // Getters & Setters
@@ -104,10 +101,8 @@ public class Utilisateur  {
         this._adresse = _adresse;
     }
 
- 
-
-    public int getRole() {
-        return _role;
+    public String getRole (int _role) {
+        return Roles.getStringRole(_role);
     }
 
     public void setRole(int _role) {

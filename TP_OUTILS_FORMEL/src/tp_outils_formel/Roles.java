@@ -16,23 +16,23 @@ public class  Roles {
    public static int CLIENT = 2;
    public static int FOURNISSEUR = 3;
    
-   public static String getRole(int i){
+   public static String getStringRole(int i){
+       String role = " "; 
     switch (i)   
     {
         case 0:
-            return "Commercant"; 
+            role= "Commercant"; 
             break;
         case 1: 
-            return "Comptable"; 
+             role= "Comptable"; 
             break; 
         case 2 :
-            return "Client"; 
+             role= "Client"; 
             break;
         case 3 : 
-            return "Fournisseur"; 
-            break;
-                  
-    }
+             role= "Fournisseur"; 
+            break;    }
+    return role;
    }
    
 }
