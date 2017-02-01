@@ -5,6 +5,10 @@
  */
 package tp_outils_formel;
 
+import Tests.TestBddConnexion;
+import Tests.TestListeUtilisateurs;
+import Tests.TestUploadLongueListe;
+
 /**
  *
  * @author cleme
@@ -15,31 +19,10 @@ public class TP_OUTILS_FORMEL {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        //Tests.TestBddConnexion test1 = new TestBddConnexion();
+        //TestListeUtilisateurs test2 =  new TestListeUtilisateurs();
         
-        // Commercant
-        
-        /*monCommmercant.setNom("Dupond");
-        monCommmercant.setPrenom("Paul");
-        monCommmercant.setId(3);*/
-       // ListeDeComptes lescomptesducommercant = new ListeDeComptes();
-        Utilisateur monCommmercant = new Utilisateur(3,"Dupond","Paul", " ",0); 
-       // System.out.println(" Commercant : "+monCommmercant.getNom()+" "+ monCommmercant.getPrenom()+" , id : ");//+ monCommmercant.getMontantComptePrincipal()+ "\n");
-        System.out.println(monCommmercant.recupererInfosUtilisateur());
-        // Comptable
-      /*  ListeDeComptes lescomptesducomptable = new ListeDeComptes();
-        Utilisateur monComptable = new Utilisateur(5,"Martin","Pierre"," ", lescomptesducomptable, 1); 
-        DonneesBancaires DonnesCompt = new DonneesBancaires("popo2", "caca23f"); 
-        Compte comptePrincCompt = new Compte(32.25, DonnesCompt);
-        lescomptesducomptable.setComptePrincipal(comptePrincCompt);
-        System.out.println(" Comptable : "+monComptable.getNom()+" "+ monComptable.getPrenom()+" , id : "+monComptable.getId()+ "montant compte princ " +comptePrincCompt.getMontantCourant()+ "\n");
-        
-        
-        monCommmercant.demanderPrelevementComptePricincipal(36.50, monComptable);
-        System.out.println(" Nouveaux montant : Commercant : "+ comptePrinc.getMontantCourant() + "  , Comptable "+ comptePrincCompt.getMontantCourant()+"\n ");
-        */
-        
-        
+        TestUploadLongueListe test3 = new TestUploadLongueListe();
     }
     
 }
