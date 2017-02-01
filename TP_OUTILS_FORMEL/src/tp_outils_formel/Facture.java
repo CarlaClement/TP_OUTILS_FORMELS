@@ -13,24 +13,25 @@ package tp_outils_formel;
 public class Facture {
     private String _date; 
     private double _montant; 
-    private String _emetteur; 
-    private String _recepteur; 
-    private int _id; 
+    private int _idEmetteur; 
+    private int _idRecepteur; 
+    private static int _id; 
     
     public Facture(){
         _date=""; 
         _montant=0.0; 
-        _emetteur=null; 
-        _recepteur=null; 
+        _idEmetteur=0; 
+        _idRecepteur=0; 
         _id=0; 
                 
     }
     
-    public Facture(String date, double montant, String recepteur , String emetteur){
+    public Facture(String date, double montant, int idEmetteur, int idRecepteur ){
         _date = date; 
         _montant = montant; 
-        _emetteur=emetteur; 
-        _recepteur=recepteur;     
+        _idEmetteur=idEmetteur; 
+        _idRecepteur=idRecepteur; 
+        _id++;
     }
     
     // Getters & Setters
@@ -50,19 +51,27 @@ public class Facture {
         this._montant = _montant;
     }
 
-    public String getEmetteur() {
-        return _emetteur;
+    public int getEmetteur() {
+        return _idEmetteur ;
     }
 
-    public void setEmetteur(String _emetteur) {
-        this._emetteur = _emetteur;
+    public void setEmetteur(int idEmetteur) {
+        this._idEmetteur = idEmetteur;
     }
 
-    public String getRecepteur() {
-        return _recepteur;
+    public int getRecepteur() {
+        return _idRecepteur;
     }
 
-    public void setRecepteur(String _recepteur) {
-        this._recepteur = _recepteur;
+    public void setRecepteur(int idRecepteur) {
+        this._idRecepteur = idRecepteur;
+    }
+    
+    public int getId() {
+        return _id;
+    }
+
+    public void setId(int id) {
+        this._id = id;
     }
 }

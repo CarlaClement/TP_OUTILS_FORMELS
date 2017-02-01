@@ -45,9 +45,16 @@ public class ListeDeComptes {
     public Compte getComptePrincipal() {
         return _comptePrincipal;
     }
-
+    public Compte getCompte(int index) {
+       //id = position dans la liste
+        return _listeDeComptes.get(index); 
+    }
     public void setComptePrincipal(Compte _comptePrincipal) {
         this._comptePrincipal = _comptePrincipal;
+    }
+    
+    public ArrayList<Compte> getListeComptes(){
+        return _listeDeComptes; 
     }
 
     public int getIdProprietaire() {

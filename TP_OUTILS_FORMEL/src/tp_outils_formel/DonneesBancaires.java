@@ -13,12 +13,16 @@ package tp_outils_formel;
 public class DonneesBancaires {
     private String _iban;    
     private String _bic; 
-    //private Utilisateur _owner;
+    //private Utilisateur _owner;  --> En accédant aux données nacaires, on ne peut pas remonter au propriétaire du compte
     
 public DonneesBancaires(String iban, String bic){
     _iban=iban; 
     _bic=bic; 
    // _owner=owner; 
+}
+public DonneesBancaires(){
+    _iban=""; 
+    _bic="";
 }
 
 //Getters & Setters

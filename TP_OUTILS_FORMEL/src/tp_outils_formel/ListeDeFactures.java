@@ -18,11 +18,19 @@ public class ListeDeFactures{
     public ListeDeFactures(){
         _listeFactures=new ArrayList<>(); 
     }
-    
+    public ListeDeFactures(Facture facture){
+        _listeFactures=new  ArrayList<>();
+        _listeFactures.add(facture); 
+    }
+            
     public void ajouterFacture(Facture maFacture){
         _listeFactures.add(maFacture); 
     }
      public void supprimerFacture(Facture maFacture){
         _listeFactures.remove(maFacture); 
     }
+     public Facture getFacture(int i){
+         return _listeFactures.get(i);
+     }
+             
 }
