@@ -5,7 +5,6 @@
  */
 package tp_outils_formel;
 
-import Tests.TestBddConnexion;
 import Tests.TestListeUtilisateurs;
 import Tests.TestUploadLongueListe;
 
