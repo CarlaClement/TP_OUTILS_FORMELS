@@ -5,6 +5,8 @@
  */
 package tp_outils_formel;
 
+import javafx.stage.Stage;
+
 /**
  *
  * @author cleme
@@ -14,7 +16,7 @@ public class TP_OUTILS_FORMEL {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         // TODO code application logic here
         
         // Commercant
@@ -26,6 +28,7 @@ public class TP_OUTILS_FORMEL {
         Utilisateur monCommmercant = new Utilisateur(3,"Dupond","Paul", "25, Rue du Change, 37000 TOURS ",0); 
        // System.out.println(" Commercant : "+monCommmercant.getNom()+" "+ monCommmercant.getPrenom()+" , id : ");//+ monCommmercant.getMontantComptePrincipal()+ "\n");
         System.out.println(monCommmercant.recupererInfosUtilisateur());
+        monCommmercant.setMontantComptePrincipal(24.56);
         //System.out.println(" Montant compte principal : " + monCommmercant.getMontantComptePrincipal());
        /*ListeDeComptes tempC = monCommmercant.getMesComptes();
        Compte t = tempC{0};
@@ -42,8 +45,10 @@ public class TP_OUTILS_FORMEL {
         monCommmercant.demanderPrelevementComptePricincipal(36.50, monComptable);
         System.out.println(" Nouveaux montant : Commercant : "+ comptePrinc.getMontantCourant() + "  , Comptable "+ comptePrincCompt.getMontantCourant()+"\n ");
         */
-        
-        
+       /* 
+        Ihm monIhm = new Ihm();
+        Stage myStage = new Stage();
+        monIhm.start(myStage);*/
     }
     
 }

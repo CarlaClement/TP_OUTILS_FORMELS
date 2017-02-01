@@ -26,7 +26,7 @@ public class Utilisateur  {
        
     //COnstructeur
     public Utilisateur(){
-        _mesComptes=null;
+        _mesComptes=new ListeDeComptes(0);
         _id=0;
         _nom = ""; 
         _prenom = ""; 
@@ -35,6 +35,7 @@ public class Utilisateur  {
         _monDossier=null; 
     }
     public Utilisateur(int _id, String _nom, String _prenom, String _adresse, int _role) {
+        this._mesComptes=new ListeDeComptes(0);
         this._id = _id;
         this._nom = _nom;
         this._prenom = _prenom;
