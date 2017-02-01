@@ -34,6 +34,8 @@ public class Utilisateur  {
         _role = Roles.COMMERCANT; //par défaut l'utilisateur est un commercant              
         _monDossier=null; 
     }
+
+
     public Utilisateur(int _id, String _nom, String _prenom, String _adresse, int _role) {
         this._id = _id;
         this._nom = _nom;
@@ -73,7 +75,7 @@ public class Utilisateur  {
     }
     
     public String recupererInfosUtilisateur(){
-        return ("Utilisateur "+getRole(_role) +", N°"+ this._id+" , "+ _nom+" "+_prenom+", adresse : "+_adresse+ " \n"); 
+        return ("Utilisateur "+ getRole(_role) +", N°"+ this._id+" , "+ _nom+" "+_prenom+", adresse : "+_adresse+ " \n"); 
     }
     
     // Getters & Setters
