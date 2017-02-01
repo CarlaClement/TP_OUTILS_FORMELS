@@ -15,21 +15,45 @@ import java.util.ArrayList;
 public class ListeDeFactures{
     private final ArrayList<Facture> _listeFactures; 
     //Constructeur 
-    public ListeDeFactures(){
+
+    /**
+     *
+     */
+        public ListeDeFactures(){
         _listeFactures=new ArrayList<>(); 
     }
+
+    /**
+     *
+     * @param facture
+     */
     public ListeDeFactures(Facture facture){
         _listeFactures=new  ArrayList<>();
         _listeFactures.add(facture); 
     }
             
+    /**
+     *
+     * @param maFacture
+     */
     public void ajouterFacture(Facture maFacture){
         _listeFactures.add(maFacture); 
     }
-     public void supprimerFacture(Facture maFacture){
+
+    /**
+     *
+     * @param maFacture
+     */
+    public void supprimerFacture(Facture maFacture){
         _listeFactures.remove(maFacture); 
     }
-     public Facture getFacture(int i){
+
+    /**
+     *
+     * @param i
+     * @return
+     */
+    public Facture getFacture(int i){
          return _listeFactures.get(i);
      }
              

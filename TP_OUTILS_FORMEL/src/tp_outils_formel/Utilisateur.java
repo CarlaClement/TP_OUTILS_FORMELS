@@ -25,7 +25,11 @@ public class Utilisateur  {
     private final Dossier _monDossier; 
        
     //COnstructeur
-    public Utilisateur(){
+
+    /**
+     *
+     */
+        public Utilisateur(){
         _mesComptes=new ListeDeComptes(0);
         _id=0;
         _nom = ""; 
@@ -35,7 +39,14 @@ public class Utilisateur  {
         _monDossier=null; 
     }
 
-
+    /**
+     *
+     * @param _id
+     * @param _nom
+     * @param _prenom
+     * @param _adresse
+     * @param _role
+     */
     public Utilisateur(int _id, String _nom, String _prenom, String _adresse, int _role) {
         this._mesComptes=new ListeDeComptes(0);
         this._id = _id;
@@ -47,7 +58,14 @@ public class Utilisateur  {
     }
     // En fonction de son rôle l'utilisateur accède à différentes fonctionalités 
     //Méthodes globales à tous les utilisateurs: 
-    public Facture emettreFacture(int idRecepteur, double montant){
+
+    /**
+     *
+     * @param idRecepteur
+     * @param montant
+     * @return
+     */
+        public Facture emettreFacture(int idRecepteur, double montant){
         Date dateDuJour = new Date(); 
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         return new Facture(dateFormat.format(dateDuJour), montant, this._id, idRecepteur);
@@ -57,6 +75,11 @@ public class Utilisateur  {
         /* Checker la base de données utilisateurs */  
     }
     
+    /**
+     *
+     * @param _montant
+     * @param user
+     */
     public void demanderPrelevementComptePricincipal(double _montant, Utilisateur user){//int idDuProprietaire){
         // Si l'utilisateur est autorisé à prélever
         //if(****************)
@@ -71,60 +94,131 @@ public class Utilisateur  {
          compteACrediter.setMontantCourant((_montant+temp));
     }
     
+    /**
+     *
+     * @return
+     */
     public double getMontantComptePrincipal(){
         return this._mesComptes.getComptePrincipal().getMontantCourant();    
     }
-     public void setMontantComptePrincipal(double montant){
+
+    /**
+     *
+     * @param montant
+     */
+    public void setMontantComptePrincipal(double montant){
          this._mesComptes.getComptePrincipal().setMontantCourant(montant);    
     }
+
+    /**
+     *
+     * @return
+     */
     public String recupererInfosUtilisateur(){
         return ("Utilisateur "+ getRole(_role) +", N°"+ this._id+" , "+ _nom+" "+_prenom+", adresse : "+_adresse+ " \n"); 
     }
     
+    public void supprimerMonCompte(int index){
+        this._mesComptes.supprimerCompte(index);
+    }
+    public void ajouterCompte(Compte nouveauCompte){
+        this._mesComptes.ajouterCompte(nouveauCompte);
+    }
     // Getters & Setters
-    public String getNom() {
+
+    /**
+     *
+     * @return
+     */
+        public String getNom() {
         return _nom;
     }
 
+    /**
+     *
+     * @param _nom
+     */
     public void setNom(String _nom) {
         this._nom = _nom;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPrenom() {
         return _prenom;
     }
 
+    /**
+     *
+     * @param _prenom
+     */
     public void setPrenom(String _prenom) {
         this._prenom = _prenom;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getAdresse() {
         return _adresse;
     }
 
+    /**
+     *
+     * @param _adresse
+     */
     public void setAdresse(String _adresse) {
         this._adresse = _adresse;
     }
 
+    /**
+     *
+     * @param _role
+     * @return
+     */
     public String getRole (int _role) {
         return Roles.getStringRole(_role);
     }
 
+    /**
+     *
+     * @param _role
+     */
     public void setRole(int _role) {
         this._role = _role;
     }
-   public int getId() {
+
+    /**
+     *
+     * @return
+     */
+    public int getId() {
         return _id;
     }
 
+    /**
+     *
+     * @param _id
+     */
     public void setId(int _id) {
         this._id = _id;
     }
 
+    /**
+     *
+     * @return
+     */
     public ListeDeComptes getMesComptes() {
         return _mesComptes;
     }
 
+    /**
+     *
+     * @param _mesComptes
+     */
     public void setMesComptes(ListeDeComptes _mesComptes) {
         this._mesComptes = _mesComptes;
     }

@@ -15,12 +15,23 @@ public class ListeUtilisateurs {
     private ArrayList<Utilisateur> _listeUtilisateurs;                          // Conteneur de la bdd
     
     /* Constructeur par défaut */
+
+    /**
+     *
+     */
+    
     public ListeUtilisateurs(){
         _listeUtilisateurs = new ArrayList<>();
     }
     
     
     /* Constructeur de la liste, prend une liste comme paramètre */
+
+    /**
+     *
+     * @param liste
+     */
+    
     public ListeUtilisateurs(ArrayList<Utilisateur> liste){
         _listeUtilisateurs = new ArrayList<>();
         liste.forEach((u) -> {
@@ -29,18 +40,38 @@ public class ListeUtilisateurs {
     }
     
     /* Getter de la liste */
+
+    /**
+     *
+     * @return
+     */
+    
     public ArrayList<Utilisateur> get(){
         return _listeUtilisateurs;
     }
     
+    /**
+     *
+     * @param u
+     */
     public void ajouter(Utilisateur u){
         _listeUtilisateurs.add(u);
     }
     
+    /**
+     *
+     * @param id
+     * @return
+     */
     public Utilisateur get(int id){
         return _listeUtilisateurs.get(id);
     }
     
+    /**
+     *
+     * @param u
+     * @return
+     */
     public boolean supprimer(Utilisateur u){
         System.out.println("Id à supprimer : " + u.getId());
         if(_listeUtilisateurs.remove(u.getId()) != null){
@@ -49,6 +80,10 @@ public class ListeUtilisateurs {
         return false;
     }
     
+    /**
+     *
+     * @return
+     */
     public int nbUtilisateurs(){
         return _listeUtilisateurs.size();
     }

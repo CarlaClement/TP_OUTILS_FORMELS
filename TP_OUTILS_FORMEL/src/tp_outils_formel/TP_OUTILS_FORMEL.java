@@ -24,6 +24,14 @@ public class TP_OUTILS_FORMEL {
     public static void main(String[] args) {
         //Tests.TestBddConnexion test1 = new TestBddConnexion();
         //TestListeUtilisateurs test2 =  new TestListeUtilisateurs();
+        Utilisateur user = new Utilisateur();
+        DonneesBancaires donneesTest = new DonneesBancaires("abc", "coco");
+        DonneesBancaires donneesTest2 = new DonneesBancaires("abc2", "coco2");
+        Compte compteTest = new Compte(18, donneesTest, 1);
+        Compte compteTest2 = new Compte(18, donneesTest2, 2);
+        user.ajouterCompte(compteTest);
+        //user.ajouterCompte(compteTest2);
+       
 
  
     }

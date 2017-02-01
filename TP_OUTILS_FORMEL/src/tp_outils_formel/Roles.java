@@ -11,12 +11,33 @@ package tp_outils_formel;
  * @author Administrateur
  */
 public class  Roles {
-   public static int COMMERCANT = 0;
-   public static int COMPTABLE = 1; 
-   public static int CLIENT = 2;
-   public static int FOURNISSEUR = 3;
+
+    /**
+     *
+     */
+    public static int COMMERCANT = 0;
+ 
+    /**
+     *
+     */
+    public static int COMPTABLE = 1; 
+
+    /**
+     *
+     */
+    public static int CLIENT = 2;
+
+    /**
+     *
+     */
+    public static int FOURNISSEUR = 3;
    
-   public static String getStringRole(int i){
+    /**
+     *
+     * @param i
+     * @return
+     */
+    public static String getStringRole(int i){
        String role = " "; 
     switch (i)   
     {

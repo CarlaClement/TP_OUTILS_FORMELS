@@ -35,10 +35,20 @@ public class BddConnexion{
     private Connection conn;
     
     /* Constructeur par défaut */
+
+    /**
+     *
+     */
+    
     public BddConnexion(){
     
     }
     
+    /**
+     *
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public void connecter() throws SQLException, ClassNotFoundException{
         Class.forName("org.h2.Driver");
         conn = DriverManager.getConnection("jdbc:h2:~/test", "admin", "");
@@ -46,6 +56,12 @@ public class BddConnexion{
     }
     
     /* Methode qui déconnecte l'objet au serveur de la base de données */
+
+    /**
+     *
+     * @throws SQLException
+     */
+    
     public void deconnnecter() throws SQLException{
         /* Nous contrôlons si nous sommes connectés */
         if(conn.isValid(2)){
@@ -110,6 +126,10 @@ public class BddConnexion{
         }
     }
     
+    /**
+     *
+     * @param liste
+     */
     public void uploadListeUtisateur(ArrayList<Utilisateur> liste){
         if(liste != null){
             

@@ -18,7 +18,12 @@ public class Dossier {
     private ListeDeFactures _listeDeFactures;
        
     //Constructeur
-    public Dossier(int _idCommercant) {
+
+    /**
+     *
+     * @param _idCommercant
+     */
+        public Dossier(int _idCommercant) {
         _idCommercant=0; 
         _idComptable=0; 
         _listeDeFactures=null; 
@@ -27,26 +32,51 @@ public class Dossier {
     
     
     //Getter & Setters
-    public int getIdCommercant() {
+
+    /**
+     *
+     * @return
+     */
+        public int getIdCommercant() {
         return _idCommercant;
     }
 
+    /**
+     *
+     * @param _idCommercant
+     */
     public void setIdCommercant(int _idCommercant) {
         this._idCommercant = _idCommercant;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getIdComptable() {
         return _idComptable;
     }
 
+    /**
+     *
+     * @param _idComptable
+     */
     public void setIdComptable(int _idComptable) {
         this._idComptable = _idComptable;
     }
 
+    /**
+     *
+     * @return
+     */
     public ListeDeFactures getListeDeFactures() {
         return _listeDeFactures;
     }
 
+    /**
+     *
+     * @param _listeDeFactures
+     */
     public void setListeDeFactures(ListeDeFactures _listeDeFactures) {
         this._listeDeFactures = _listeDeFactures;
     }

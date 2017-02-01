@@ -15,39 +15,56 @@ public class DonneesBancaires {
     private String _bic; 
     //private Utilisateur _owner;  --> En accédant aux données nacaires, on ne peut pas remonter au propriétaire du compte
     
-public DonneesBancaires(String iban, String bic){
+    /**
+     *
+     * @param iban
+     * @param bic
+     */
+    public DonneesBancaires(String iban, String bic){
     _iban=iban; 
     _bic=bic; 
    // _owner=owner; 
 }
-public DonneesBancaires(){
+
+    /**
+     *
+     */
+    public DonneesBancaires(){
     _iban=""; 
     _bic="";
 }
 
 //Getters & Setters
-    public String getIban() {
+
+    /**
+     *
+     * @return
+     */
+        public String getIban() {
         return _iban;
     }
 
+    /**
+     *
+     * @param _iban
+     */
     public void setIban(String _iban) {
         this._iban = _iban;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getBic() {
         return _bic;
     }
 
+    /**
+     *
+     * @param _bic
+     */
     public void setBic(String _bic) {
         this._bic = _bic;
     }
-/*
-    public Utilisateur getOwner() {
-        return _owner;
-    }
-
-    public void setOwner(Utilisateur _owner) {
-        this._owner = _owner;
-    }
-  */
 }

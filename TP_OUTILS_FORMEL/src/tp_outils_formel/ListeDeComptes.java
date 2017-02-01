@@ -18,49 +18,126 @@ public class ListeDeComptes {
      private  int _idProprietaire; 
 
     //Constructeur 
-    public ListeDeComptes(int id){
+
+    /**
+     *
+     * @param id
+     */
+        public ListeDeComptes(int id){
         _listeDeComptes=new ArrayList<>(); 
         _listeDeComptes.add(new Compte());
         _comptePrincipal = _listeDeComptes.get(0);
         _idProprietaire=id; 
     }
     
-    public void ajouterCompte(Compte monCompte){
+    /**
+     *
+     * @param monCompte
+     * @return 0 : Action validée; 1: le compte passé est nul, 2: la siste de compte n'a pas été allongée donc compte non ajouté, 3: le compte ajouté n'est pas le même
+     */
+    public int ajouterCompte(Compte monCompte){
+         int tailleListe = _listeDeComptes.size(); 
+        if(monCompte==null){
+            return 1;
+        }else{
         _listeDeComptes.add(monCompte); 
+        }
+        int newTailleListe = _listeDeComptes.size();
+        if(tailleListe == newTailleListe){
+            return 2;
+        }
+        if (_listeDeComptes.get(newTailleListe) != monCompte){
+            return 2;
+        }
+        return 0;
     }
-    public void supprimerCompte(Compte monCompte){
-        _listeDeComptes.remove(monCompte);
+
+    /**
+     *
+     * @param monCompte
+     * @return 0 : Fonction valide, 1 : compte passé nul, 2 : Liste de taille inchangée = compte non supprimé
+     */
+    public int supprimerCompte(int index){
+        
+        if(index==0){
+            return 1; // On ne supprime pas le compte principal 
+        }else{
+           // _listeDeComptes.remove(monCompte);
+            //if (
+            _listeDeComptes.remove(index) ;//== false)
+            //{
+                //return 2;
+            }
+                
+            return 0;
     }
     
+    /**
+     *
+     * @param _montant
+     */
     public void setMontantComptePrincipal(double _montant){
         _comptePrincipal.setMontantCourant(_montant);
     }
     
+    /**
+     *
+     * @param _iban
+     * @param _bic
+     */
     public void setDonnesComptePrincipal(String _iban, String _bic){
         DonneesBancaires mesDonnees;
          mesDonnees = new DonneesBancaires(_iban, _bic);
         _comptePrincipal.setMesDonnesBancaires(mesDonnees);
     }
     // Getters & Setters
-    public Compte getComptePrincipal() {
+
+    /**
+     *
+     * @return
+     */
+        public Compte getComptePrincipal() {
         return _comptePrincipal;
     }
+
+    /**
+     *
+     * @param index
+     * @return
+     */
     public Compte getCompte(int index) {
        //id = position dans la liste
         return _listeDeComptes.get(index); 
     }
+
+    /**
+     *
+     * @param _comptePrincipal
+     */
     public void setComptePrincipal(Compte _comptePrincipal) {
         this._comptePrincipal = _comptePrincipal;
     }
     
+    /**
+     *
+     * @return
+     */
     public ArrayList<Compte> getListeComptes(){
         return _listeDeComptes; 
     }
 
+    /**
+     *
+     * @return
+     */
     public int getIdProprietaire() {
         return _idProprietaire;
     }
 
+    /**
+     *
+     * @param idProprietaire
+     */
     public void setIdProprietaire(int idProprietaire) {
         _idProprietaire = idProprietaire;
     }
