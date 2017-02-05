@@ -6,10 +6,12 @@
 
 package tp_outils_formel;
 
+import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Before;
 
 /**
  *
@@ -26,6 +28,14 @@ public class CompteTest {
     
     @AfterClass
     public static void tearDownClass() {
+    }
+
+    @Before
+    public void setUp() throws Exception {
+    }
+
+    @After
+    public void tearDown() throws Exception {
     }
 
     /**
@@ -51,11 +61,46 @@ public class CompteTest {
     }
 
     /**
-     * Test of getMontantCourant method, of class Compte.
+     * Test of setMontantCourant method, of class Compte.
      */
-    
     @Test
-    public void testGetMontantCourant() {
+    public void testSetMontantCourant() {
+        System.out.println("setMontantCourant");
+        double _newMontantCourant = 345.67;
+        Compte instance = new Compte();
+        int expResult = 0;
+        int result = instance.setMontantCourant(_newMontantCourant);
+        assertEquals(expResult, result);        
+    }
+
+    /**
+     * Test of getMesDonnesBancaires method, of class Compte.
+     */
+    @Test
+    public void testGetMesDonnesBancaires() {
+        System.out.println("getMesDonnesBancaires");
+        Compte instance = new Compte();
+        DonneesBancaires donnees = new DonneesBancaires("caca", "popo");
+        instance.setMesDonnesBancaires(donnees);
+        DonneesBancaires expResult = donnees;
+        DonneesBancaires result = instance.getMesDonnesBancaires();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+       
+    }
+
+    /**
+     * Test of setMesDonnesBancaires method, of class Compte.
+     */
+    @Test
+    public void testSetMesDonnesBancaires() {
+        System.out.println("setMesDonnesBancaires");
+        DonneesBancaires _newDonnesBancaires = new DonneesBancaires("caca", "popo");
+        Compte instance = new Compte();
+        int expResult =0;
+        int result = instance.setMesDonnesBancaires(_newDonnesBancaires);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
        
     }
     /**
