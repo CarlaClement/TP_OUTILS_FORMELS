@@ -24,9 +24,9 @@ public class ListeDeComptes {
      * @param id
      */
         public ListeDeComptes(int id){
-        _listeDeComptes=new ArrayList<>(); 
-        _listeDeComptes.add(new Compte());
-        _comptePrincipal = _listeDeComptes.get(0);
+        _listeDeComptes=new ArrayList<>(0); 
+        _listeDeComptes.add(_comptePrincipal);
+        //_comptePrincipal = _listeDeComptes.get(0);
         _idProprietaire=id; 
     }
     
@@ -36,17 +36,13 @@ public class ListeDeComptes {
      * @return 0 : Action validée; 1: le compte passé est nul, 2: la siste de compte n'a pas été allongée donc compte non ajouté, 3: le compte ajouté n'est pas le même
      */
     public int ajouterCompte(Compte monCompte){
-         int tailleListe = _listeDeComptes.size(); 
+        boolean added;
         if(monCompte==null){
             return 1;
         }else{
-        _listeDeComptes.add(monCompte); 
+            added = _listeDeComptes.add(monCompte); 
         }
-        int newTailleListe = _listeDeComptes.size();
-        if(tailleListe == newTailleListe){
-            return 2;
-        }
-        if (_listeDeComptes.get(newTailleListe) != monCompte){
+        if(added != true){
             return 2;
         }
         return 0;
@@ -58,16 +54,17 @@ public class ListeDeComptes {
      * @return 0 : Fonction valide, 1 : compte passé nul, 2 : Liste de taille inchangée = compte non supprimé
      */
     public int supprimerCompte(int index){
-        
+        Compte aSupp ;
         if(index==0){
             return 1; // On ne supprime pas le compte principal 
         }else{
-           // _listeDeComptes.remove(monCompte);
-            //if (
+            aSupp= _listeDeComptes.get(index);
             _listeDeComptes.remove(index) ;//== false)
-            //{
-                //return 2;
-            }
+        }
+        if(_listeDeComptes.get(index)==aSupp)
+        {
+            return 2;
+        }
                 
             return 0;
     }

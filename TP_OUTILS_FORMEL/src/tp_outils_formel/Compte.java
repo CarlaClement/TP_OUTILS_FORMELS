@@ -71,12 +71,12 @@ public class Compte {
      * Retourne le montant présent actuellement sur le compte 
      * @return
      */
-        public double getMontantCourant() {
+    public double getMontantCourant() {
         return _montantCourant;
     }
     
     /**
-     *Permet de mettre à jour le montant présent sur le compte 
+     * Permet de mettre à jour le montant présent sur le compte 
      * @param _newMontantCourant
      * @return 0 : Action validée ; 1 : Donnée non mise à jour en bdd
      */
@@ -89,7 +89,7 @@ public class Compte {
     }
 
     /**
-     *Retourne les données bancaires si l'utilisateur faisant la demande est le propriétaire du compte
+     * Retourne les données bancaires si l'utilisateur faisant la demande est le propriétaire du compte
      * Les données bancaires sont cryptées en base de données 
      * @return
      */
@@ -98,15 +98,15 @@ public class Compte {
     }
 
     /**
-     *
+     * Permet de mettre à jour les données bancaires du compte
      * @param _newDonnesBancaires
      * @return 0 : Action validée; 1: Bic vide ; 2: Iban vide; 3 : Données non mises à jour en bdd
      */
     public int setMesDonnesBancaires(DonneesBancaires _newDonnesBancaires) {
         if(_newDonnesBancaires.getBic()== null){
             return 1; 
-        }
-        if(_newDonnesBancaires.getIban()!=null){
+        } 
+        if(_newDonnesBancaires.getIban()==null){
             return 2;
         }
         // On ne met à jour les données que si elles sont non vides
