@@ -11,5 +11,7 @@ package tp_outils_formel;
  * @author Administrateur
  */
 public class Commercant extends Utilisateur{
-    
+    public Commercant (){
+          _role=0; 
+    }
 }

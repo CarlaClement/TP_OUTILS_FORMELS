@@ -14,7 +14,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -29,6 +28,8 @@ public class Ihm extends Application{
      *
      * @param args
      */
+    
+    Scene sceneAccueil, sceneInscription;
     public static void main(String[] args) {
         System.out.println( "Main method inside Thread : " +  Thread.currentThread().getName());
         launch(args);
@@ -40,7 +41,7 @@ public class Ihm extends Application{
      * @throws Exception
      */
     @Override
-    public void start(Stage args) throws Exception {
+    public void start(Stage args) {//throws Exception {
         System.out.println( "Start method inside Thread : " +  Thread.currentThread().getName());
         
         // Bouton continuer
@@ -51,8 +52,10 @@ public class Ihm extends Application{
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("L'utilisateur entre dans l'application ");
+                args.setScene(sceneInscription);
             }
         });
+   
         
          // Panneau message de bienvenue       
         Group sign = new Group();
@@ -65,17 +68,17 @@ public class Ihm extends Application{
         //panel.setFill(Color.DARKBLUE);
         //sign.getChildren().add(panel);
         sign.getChildren().add(text);
-        
+        //jiozf i
         //Stack pane  - Resizable
         StackPane root = new StackPane();
         root.getChildren().add(sign);
         root.getChildren().add(btn);
-        //Scene
-        Scene scene = new Scene(root, 600, 650);
+        //Scene  Accueil
+        sceneAccueil = new Scene(root, 600, 650);
 
         args.setTitle("Bienvenu sur BestGest ! ");
         
-        args.setScene(scene);
+        args.setScene(sceneAccueil);
         args.show();
 
     }

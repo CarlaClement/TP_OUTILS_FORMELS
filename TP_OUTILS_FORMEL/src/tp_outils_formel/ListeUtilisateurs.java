@@ -21,7 +21,7 @@ public class ListeUtilisateurs {
      */
     
     public ListeUtilisateurs(){
-        _listeUtilisateurs = new ArrayList<>();
+        _listeUtilisateurs = new ArrayList<>(0);
     }
     
     
@@ -39,10 +39,8 @@ public class ListeUtilisateurs {
         });
     }
     
-    /* Getter de la liste */
-
     /**
-     *
+     *Getter de la liste 
      * @return
      */
     
@@ -54,8 +52,15 @@ public class ListeUtilisateurs {
      *
      * @param u
      */
-    public void ajouter(Utilisateur u){
-        _listeUtilisateurs.add(u);
+    public int ajouter(Utilisateur u){
+        boolean a; 
+        if(u!=null){
+           a= _listeUtilisateurs.add(u);
+        }else{return 1;}
+        if(a==false){
+            return 2;
+        }
+        return 0; 
     }
     
     /**
@@ -68,16 +73,16 @@ public class ListeUtilisateurs {
     }
     
     /**
-     *
+     * Suppression d'un utilisateur de la liste en fonction de son id
      * @param u
-     * @return
+     * @return : 0 : action valide, 1: action non réalisée
      */
-    public boolean supprimer(Utilisateur u){
+    public int supprimer(Utilisateur u){
         System.out.println("Id à supprimer : " + u.getId());
-        if(_listeUtilisateurs.remove(u.getId()) != null){
-            return true;
+        if(null == _listeUtilisateurs.remove(u.getId())){
+            return 1;
         }
-        return false;
+        return 0;
     }
     
     /**
