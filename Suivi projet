@@ -1,15 +1,22 @@
 francois.senis@worldline.com
 valentin.doulcier@worldline.com
 
+
+20/02/2017
+
 A faire 
-Prochaine  séance
- - Emettre spécification + diag de classes
- - Créer base de données utilisateurs
- - Tester échange facture 
- 
-Global
-- Sécurité : protéger données bancaires - demande prélèvement
+
+ - Envoyer spécification + diag de classes         ---> En cours 
+ - Préparer fiche explicative pour déploeiment bdd et appli ---> Pas commencé
+ - Poursuivre IHM                                 ---> En cours
+- Sécurité : protéger données bancaires - demande prélèvement  ---> En cours ? 
 - Tests : 
-  - tests unitaires : tester chaque classe (création client, compte, facture, émission bilan comptable, etc)
+  - tests unitaires : tester chaque classe (création client, compte, facture, émission bilan comptable, etc)  --> OK
   - tests fonctionnels : 
-- Contrôle de code : vérifier que les méthodes sont en adéquation avec la spéc et maintenabilité
+- Contrôle de code : vérifier que les méthodes sont en adéquation avec la spéc et maintenabilité  --> OK 
+
+
+Peux-tu compléter la liste? Me dire oùtu en es sur la bdd car depuis j'ai oublié. 
+J'ai poursuivi l'ihm,  pour voir ce que j'ai fais tu exécute le fichier Ihm.java (Maj+F6).
+Il reste à associer les boutons aux différentes méthodes. 
+On fait des tests sur l'ihm? 
