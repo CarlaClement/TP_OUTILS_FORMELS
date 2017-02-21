@@ -9,7 +9,8 @@ A faire
  - Envoyer spécification + diag de classes         ---> En cours 
  - Préparer fiche explicative pour déploeiment bdd et appli ---> Pas commencé
  - Poursuivre IHM                                 ---> En cours
-- Sécurité : protéger données bancaires - demande prélèvement  ---> En cours ? 
+- Sécurité : protéger données bancaires - demande prélèvement  ---> A faire. 
+- Sécurité : protéger les mots de passes : A tester.
 - Tests : 
   - tests unitaires : tester chaque classe (création client, compte, facture, émission bilan comptable, etc)  --> OK
   - tests fonctionnels : 
