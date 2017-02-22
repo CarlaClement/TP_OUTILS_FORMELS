@@ -87,10 +87,38 @@ public class ListeUtilisateurs {
     
     /**
      *
-     * @return
+     * @return nombre d'utilisateurs dans la liste.
      */
     public int nbUtilisateurs(){
         return _listeUtilisateurs.size();
     }
     
+    /**
+     * 
+     * @param id : id unique
+     * @param pwd : password à comparer
+     * @return :    0 : Succès
+     *              1 : Mot de passe incorrect
+     *             -1 : Utilisateur inexistant
+     */
+    public int authentificate(int id, String pwd){
+        
+            for(Utilisateur u : _listeUtilisateurs){
+            /* Recherche de l'identifiant correspondant */
+                if(u.getId() == id){
+                    /* Contrôle du Mot de Passe */
+                    if(u.getPassword().equals(pwd)){
+                        /* Retourne pwd correct */
+                        return 0;
+                    }
+                    else{
+                        /* Retourne pwd incorrect */
+                        return 1;
+                    }
+                }
+            }
+            
+        /* Utilisateur  inexistant*/
+        return -1;
+    }
 }

@@ -16,13 +16,14 @@ import java.util.Date;
  */
 public class Utilisateur  {
  
-    private int _id; 
-    private String _nom; 
-    private String _prenom; 
-    private String _adresse; 
-    private ListeDeComptes _mesComptes; 
-    int _role; 
-    private final Dossier _monDossier; 
+    private static int _id;                         /* id unique : 1000 + index tableau */
+    private String _nom;                            /* Nom de l'utilisateur */
+    private String _prenom;                         /* Prenom de l'utilisateur */
+    private String _adresse;                        /* Adresse de l'utilisateur*/
+    private ListeDeComptes _mesComptes;             /* Comptes associés à l'utilisateur */
+    private String _password;                        /* Mot de passe pour login */
+    int _role;                                      /* Role de l'utilisateur */
+    private final Dossier _monDossier;              /* Dossier lié à l'utilisateur */
        
     //COnstructeur
 
@@ -31,7 +32,7 @@ public class Utilisateur  {
      */
         public Utilisateur(){
         _mesComptes=new ListeDeComptes(0);
-        _id=0;
+        _id++;
         _nom = ""; 
         _prenom = ""; 
         _adresse=""; 
@@ -47,6 +48,17 @@ public class Utilisateur  {
      * @param _adresse
      * @param _role
      */
+    public Utilisateur(int _id, String _nom, String _prenom, String password, String _adresse, int _role) {
+        this._mesComptes=new ListeDeComptes(0);
+        this._id = _id;
+        this._nom = _nom;
+        this._prenom = _prenom;
+        this._adresse = _adresse;
+        this._role = _role;
+        this._password = password;
+         _monDossier=null;
+    }
+
     public Utilisateur(int _id, String _nom, String _prenom, String _adresse, int _role) {
         this._mesComptes=new ListeDeComptes(0);
         this._id = _id;
@@ -56,6 +68,8 @@ public class Utilisateur  {
         this._role = _role;
          _monDossier=null;
     }
+
+
     // En fonction de son rôle l'utilisateur accède à différentes fonctionalités 
     //Méthodes globales à tous les utilisateurs: 
 
@@ -205,6 +219,14 @@ public class Utilisateur  {
      */
     public void setId(int _id) {
         this._id = _id;
+    }
+    
+    /**
+     * Getter du mot de passe
+     * @return Mot de passe associé au compte
+     */
+    public String getPassword(){
+        return _password;
     }
 
     /**
