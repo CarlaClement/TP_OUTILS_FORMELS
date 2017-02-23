@@ -5,24 +5,14 @@
  */
 package Ihm;
 
-import com.sun.javafx.font.t2k.T2KFactory;
-import java.awt.BasicStroke;
-import javafx.geometry.Insets;
-import javafx.scene.Parent;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javax.swing.border.StrokeBorder;
 import tp_outils_formel.Facture;
 import tp_outils_formel.Utilisateur;
 
@@ -45,12 +35,14 @@ public class MainScreen extends Scene{
      *  FACTURES
      */
     /* Onglet Factures */
-    Tab invoicesTab = new Tab("Factures");
+    Tab invoicesTab;
     /* Layout Vertical */
     /* Région Gauche : Affichage de la liste des Factures */
-    Pane invoicesView = new Pane();
-    /* Liste des factures */
-    ListView<Facture> invoicesList = new ListView<>();
+    Pane invoicesView;
+    
+    /* Liste des Factures */
+    ListView<Facture> invoicesList;
+    
     /* Région droite : Affichage des contrôles liées aux Factures */
     Pane invoicesControl = new Pane();
     
@@ -65,21 +57,22 @@ public class MainScreen extends Scene{
         
         /* Init du Menu supérieur */
         
-        /* Init du layout principal */
-        layoutTabs = new TabPane(invoicesTab, inventoryTab);
-        /* Ajustement de la taille à la fenêtre */
-        layoutTabs.resize(widthProperty().get(), heightProperty().get());
+        /* Init de la liste list view */
+        initListView();
         
-        /* Init de la région de l'affichage des factures */
-        invoicesView.setMinSize(widthProperty().get()/2, heightProperty().get());
-        invoicesView.setMaxSize(widthProperty().get()/2, heightProperty().get());
-        invoicesView.setStyle("-fx-border-color:  black;\n");
-        /* Ajout des éléments dans la région */
-        invoicesView.getChildren().add(invoicesList);
+        /* Init de la view d'affichage des Factures */
+        initInvoicesView();
         
-        /* Ajout des régions dans l'onglet*/
-        invoicesTab.setContent(invoicesView);
-        /* Integration des éléments */
+        /* Init de la view d'affichage des contrôles des Factures */
+        initInvoicesControl();
+        
+        /* Init de l'onglet des Factures */
+        initInvoicesTab();
+        
+        /* Init du Layout */
+        initLayoutTab();
+               
+        /* Integration du Layout */
         ((VBox)getRoot()).getChildren().add(layoutTabs);
         
     }
@@ -92,18 +85,73 @@ public class MainScreen extends Scene{
         currentUser = u;
     }
     
+    /**
+     * Initialisation du conteneur des onglets
+     * Ajustement des dimensions à la taille de la fenêtre
+     */
+    private void initLayoutTab(){
+        layoutTabs = new TabPane(invoicesTab, inventoryTab);
+        
+        /* Ajustement de la taille à la fenêtre */
+        layoutTabs.resize(widthProperty().get(), heightProperty().get());
+    }
+    
+    /**
+     * Initalisation de l'onglet Factures
+     * Ajout des vues : Conteneur de la liste & Contrôle
+     */
     private void initInvoicesTab(){
+        /* Instanciation */
+        invoicesTab = new Tab("Factures");
         
+         /* Ajout de l'onglet Facture*/
+        invoicesTab.setContent(invoicesView);
     }
     
+    /**
+     * Initialisation de l'onglet de vue des factures : Conteneur de la liste 
+     * Ajustement des dimensions : Hauteur max, largeur de la page /2
+     * Ajout de la liste dans la vue
+     */
     private void initInvoicesView(){
+        /* Instanciation de la vue */
+        invoicesView = new Pane();
         
+        /* Affichage de la vue sur la partie gauche de l'affichage */
+        invoicesView.setMinSize(widthProperty().get()/2, heightProperty().get());
+        invoicesView.setMaxSize(widthProperty().get()/2, heightProperty().get());
+        /* Affichage d'un séparateur */
+        invoicesView.setStyle("-fx-border-color:  black;\n");
+        
+        /* Ajout de la liste dans la view */
+        invoicesView.getChildren().add(invoicesList);
     }
     
+    /**
+     * Initialisation de la page des contrôles des factures
+     * Instanciation de la vue
+     * Ajout des boutons : Créer Facture, Supprimer Facture, Modifier Facture
+     * Ajout des boutons : Demander prélèvement (demandeur) et valider la demande (récepteur de la demande)
+     * Autres ajouts?
+     */
     private void initInvoicesControl(){
         
     }
     
-    private void init
+    /**
+     * Initialisation de la liste des factures
+     * Instancie la liste en mémoire;
+     * Alimente la liste avec les factures en bdd
+     */
+    private void initListView(){
+        /* Instanciation de la liste */
+        invoicesList = new ListView<>();
+        /* Téléchargement des factures dans la bdd  */
+        
+        /* Ajout des Facture dans la list view */
+        
+    }
+    
+    
     
 }
