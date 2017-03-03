@@ -132,13 +132,19 @@ public class Utilisateur  {
     }
 
     /**
-     *
+     * Retourne les principales informatoins sur l'utilisateur
      * @return
      */
     public String recupererInfosUtilisateur(){
-        return ("Utilisateur "+ getRole(_role) +", N°"+ this._id+" , "+ _nom+" "+_prenom+", adresse : "+_adresse+ " \n"); 
+        return ("Utilisateur "+ getRole(_role) +", N°"+ Utilisateur._id+" , "+ _nom+" "+_prenom+", adresse : "+_adresse+ " \n"); 
     }
     
+    /**
+     *
+     * @param index
+     * @return  0 : Succes
+     *          -1 : Fail
+     */
     public int supprimerMonCompte(int index){
         int a;
         a=this._mesComptes.supprimerCompte(index);
@@ -147,6 +153,13 @@ public class Utilisateur  {
         }
         return 0;
     }
+
+    /**
+     *
+     * @param nouveauCompte
+     * @return  0 : Success
+     *          -1 : Fail
+     */
     public int ajouterCompte(Compte nouveauCompte){
         int a = this._mesComptes.ajouterCompte(nouveauCompte);
         if(a!=0){return -1;}
