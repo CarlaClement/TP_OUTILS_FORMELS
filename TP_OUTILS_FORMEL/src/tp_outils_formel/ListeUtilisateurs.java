@@ -31,6 +31,10 @@ public class ListeUtilisateurs {
      *
      * @param liste
      */
+    public ListeUtilisateurs(Utilisateur user){
+        _listeUtilisateurs=new ArrayList<>();
+        _listeUtilisateurs.add(user);
+    }
     
     public ListeUtilisateurs(ArrayList<Utilisateur> liste){
         _listeUtilisateurs = new ArrayList<>();
@@ -79,9 +83,9 @@ public class ListeUtilisateurs {
      */
     public int supprimer(Utilisateur u){
         System.out.println("Id à supprimer : " + u.getId());
-        if(null == _listeUtilisateurs.remove(u.getId())){
-            return 1;
-        }
+        int a =u.getId(); 
+        _listeUtilisateurs.remove(a);
+        //return 1;    
         return 0;
     }
     

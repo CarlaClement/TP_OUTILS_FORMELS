@@ -25,6 +25,7 @@ public class ListeDeComptes {
      */
         public ListeDeComptes(int id){
         _listeDeComptes=new ArrayList<>(0); 
+        _comptePrincipal = new Compte();
         _listeDeComptes.add(_comptePrincipal);
         //_comptePrincipal = _listeDeComptes.get(0);
         _idProprietaire=id; 
@@ -51,19 +52,21 @@ public class ListeDeComptes {
     /**
      *
      * @param monCompte
-     * @return 0 : Fonction valide, 1 : compte passé nul, 2 : Liste de taille inchangée = compte non supprimé
+     * @return   0 : Fonction valide, 
+     *          -1 : Compte passé nul, 
+     *          -2 : Liste de taille inchangée = compte non supprimé
      */
     public int supprimerCompte(int index){
         Compte aSupp ;
         if(index==0){
-            return 1; // On ne supprime pas le compte principal 
+            return -1; // On ne supprime pas le compte principal 
         }else{
             aSupp= _listeDeComptes.get(index);
             _listeDeComptes.remove(index) ;//== false)
         }
         if(_listeDeComptes.get(index)==aSupp)
         {
-            return 2;
+            return -2;
         }
                 
             return 0;
@@ -72,20 +75,33 @@ public class ListeDeComptes {
     /**
      *
      * @param _montant
+     * @return  0: Success
+     *          1 : Montant non mis à jour
      */
-    public void setMontantComptePrincipal(double _montant){
+    public int setMontantComptePrincipal(double _montant){
         _comptePrincipal.setMontantCourant(_montant);
+        if(_comptePrincipal.getMontantCourant()!=_montant){
+            return -1;
+        }
+        return 0;
     }
     
     /**
      *
      * @param _iban
      * @param _bic
+     * @return  0 : Succès
+     *          -1 : Donnees non mises à jour
      */
-    public void setDonnesComptePrincipal(String _iban, String _bic){
+    public int setDonnesComptePrincipal(String _iban, String _bic){
         DonneesBancaires mesDonnees;
          mesDonnees = new DonneesBancaires(_iban, _bic);
         _comptePrincipal.setMesDonnesBancaires(mesDonnees);
+        DonneesBancaires donnees = _comptePrincipal.getMesDonnesBancaires(); 
+        if (((donnees.getIban())!=_iban) || (donnees.getBic() != _bic)) {
+            return -1;
+        }
+            return 0; 
     }
     // Getters & Setters
 
@@ -111,8 +127,9 @@ public class ListeDeComptes {
      *
      * @param _comptePrincipal
      */
-    public void setComptePrincipal(Compte _comptePrincipal) {
+    public int setComptePrincipal(Compte _comptePrincipal) {
         this._comptePrincipal = _comptePrincipal;
+        return 0;
     }
     
     /**

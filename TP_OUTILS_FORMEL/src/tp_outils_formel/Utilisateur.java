@@ -79,33 +79,40 @@ public class Utilisateur  {
      * @param montant
      * @return
      */
-        public Facture emettreFacture(int idRecepteur, double montant){
+    public Facture emettreFacture(int idRecepteur, double montant){
         Date dateDuJour = new Date(); 
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        return new Facture(dateFormat.format(dateDuJour), montant, this._id, idRecepteur);
-        
-        //Contrôles
-        //Si le récepteur est connu, on associe la facture à son compte 
-        /* Checker la base de données utilisateurs */  
+        return new Facture(dateFormat.format(dateDuJour), montant, this._id, idRecepteur); 
     }
     
     /**
      *
      * @param _montant
      * @param user
+     * @param type : vaut 1 si l'emetteur de la demande est créditer, 0 si il est débité
+     * @return   0 : Succès
+     *          -1 : Montant non mis à jour 
      */
-    public void demanderPrelevementComptePricincipal(double _montant, Utilisateur user){//int idDuProprietaire){
-        // Si l'utilisateur est autorisé à prélever
-        //if(****************)
-        // SI le compte existe
-       // Utilisateur aDebiter = new Utilisateur();
-        //aDebiter._id=idDuProprietaire; 
-        Compte compteADebiter = user._mesComptes.getComptePrincipal();
-        double temp = compteADebiter.getMontantCourant(); 
-        compteADebiter.setMontantCourant((temp - _montant));
-        Compte compteACrediter=this._mesComptes.getComptePrincipal();
-        temp = compteACrediter.getMontantCourant(); 
-         compteACrediter.setMontantCourant((_montant+temp));
+    public int demanderPrelevementComptePricincipal(double _montant, Utilisateur user, boolean type){//int idDuProprietaire)      
+        Compte compteUtilisateur2 = user._mesComptes.getComptePrincipal();
+        Compte compteMonCompte=this._mesComptes.getComptePrincipal();
+        double temp = compteUtilisateur2.getMontantCourant();
+        double temp2 = compteMonCompte.getMontantCourant();
+        
+        if (type ==true){
+            compteUtilisateur2.setMontantCourant((temp -_montant));
+            compteMonCompte.setMontantCourant((temp2 +_montant));
+            if(compteUtilisateur2.getMontantCourant()!= (temp-_montant) || compteMonCompte.getMontantCourant()!= (temp2+_montant)){
+                return -1;
+            }
+        }else{
+            compteUtilisateur2.setMontantCourant((temp +_montant));
+            compteMonCompte.setMontantCourant((temp2 -_montant));
+            if(compteUtilisateur2.getMontantCourant()!= (temp+_montant) || compteMonCompte.getMontantCourant()!= (temp2-_montant)){
+                return -1;
+            }
+        }
+         return 0;
     }
     
     /**
@@ -132,11 +139,18 @@ public class Utilisateur  {
         return ("Utilisateur "+ getRole(_role) +", N°"+ this._id+" , "+ _nom+" "+_prenom+", adresse : "+_adresse+ " \n"); 
     }
     
-    public void supprimerMonCompte(int index){
-        this._mesComptes.supprimerCompte(index);
+    public int supprimerMonCompte(int index){
+        int a;
+        a=this._mesComptes.supprimerCompte(index);
+        if(a!=0){
+            return -1;
+        }
+        return 0;
     }
-    public void ajouterCompte(Compte nouveauCompte){
-        this._mesComptes.ajouterCompte(nouveauCompte);
+    public int ajouterCompte(Compte nouveauCompte){
+        int a = this._mesComptes.ajouterCompte(nouveauCompte);
+        if(a!=0){return -1;}
+        return 0;
     }
     // Getters & Setters
 

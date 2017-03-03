@@ -80,4 +80,5 @@ public class Dossier {
     public void setListeDeFactures(ListeDeFactures _listeDeFactures) {
         this._listeDeFactures = _listeDeFactures;
     }
+  
 }

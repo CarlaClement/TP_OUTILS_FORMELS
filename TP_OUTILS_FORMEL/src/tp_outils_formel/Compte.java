@@ -43,7 +43,11 @@ public class Compte {
      *Permet de mofidifier les données bancaires liées à l'utilisateur 
      * @param _newBic
      * @param _newIban
-     * @return 0 : Action valdiée, 1 : bic passé nul, 2 : bic non mis a jour en bdd, 3:iban passé nul, 4:iban non mis à jour en bdd
+     * @return  0 : Action valdiée, 
+     *          1 : bic passé nul, 
+     *          2 : bic non mis a jour en bdd, 
+     *          3 : iban passé nul, 
+     *          4 :  non mis à jour en bdd
      */
     public int modifierDonneesBancaires(String _newBic, String _newIban){
         if(_newBic==null){
@@ -78,7 +82,8 @@ public class Compte {
     /**
      * Permet de mettre à jour le montant présent sur le compte 
      * @param _newMontantCourant
-     * @return 0 : Action validée ; 1 : Donnée non mise à jour en bdd
+     * @return  0 : Action validée ; 
+     *          1 : Donnée non mise à jour en bdd
      */
     public int setMontantCourant(double _newMontantCourant) {
         this._montantCourant = _newMontantCourant;
@@ -100,7 +105,10 @@ public class Compte {
     /**
      * Permet de mettre à jour les données bancaires du compte
      * @param _newDonnesBancaires
-     * @return 0 : Action validée; 1: Bic vide ; 2: Iban vide; 3 : Données non mises à jour en bdd
+     * @return  0 : Action validée; 
+     *          1 : Bic vide ; 
+     *          2 : Iban vide; 
+     *          3 : Données non mises à jour en bdd
      */
     public int setMesDonnesBancaires(DonneesBancaires _newDonnesBancaires) {
         if(_newDonnesBancaires.getBic()== null){
