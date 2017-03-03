@@ -9,10 +9,12 @@ package tp_outils_formel;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Before;
 
 /**
  *
@@ -29,6 +31,14 @@ public class UtilisateurTest {
     
     @AfterClass
     public static void tearDownClass() {
+    }
+
+    @Before
+    public void setUp() throws Exception {
+    }
+
+    @After
+    public void tearDown() throws Exception {
     }
 
     /**
@@ -77,7 +87,7 @@ public class UtilisateurTest {
         aDebiter.setMontantComptePrincipal(35000.65);
         Utilisateur instance = new Utilisateur();
         instance.setMontantComptePrincipal(3200.0);
-        instance.demanderPrelevementComptePricincipal(3656, aDebiter);
+        instance.demanderPrelevementComptePricincipal(3656, aDebiter, true);
         double expectedMontantCred = 31344.65;
         double expectdeMontantInstance = 6856;
         if  ((aDebiter.getMontantComptePrincipal()== expectedMontantCred) &&(instance.getMontantComptePrincipal()== expectdeMontantInstance)){
@@ -86,32 +96,47 @@ public class UtilisateurTest {
        }
 
     /**
-     * Test of getMontantComptePrincipal method, of class Utilisateur.
+     * Test of emettreFacture method, of class Utilisateur.
      */
-    /*@Test
-    public void testGetMontantComptePrincipal() {
-        System.out.println("getMontantComptePrincipal");
+    /*
+    @Test
+    public void testEmettreFacture() {
+        System.out.println("emettreFacture");
+        int idRecepteur = 0;
+        double montant = 0.0;
         Utilisateur instance = new Utilisateur();
-        double expResult = 0.0;
-        double result = instance.getMontantComptePrincipal();
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of recupererInfosUtilisateur method, of class Utilisateur.
-     */
-    /*@Test
-    public void testRecupererInfosUtilisateur() {
-        System.out.println("recupererInfosUtilisateur");
-        Utilisateur instance = new Utilisateur();
-        String expResult = "";
-        String result = instance.recupererInfosUtilisateur();
+        Facture expResult = null;
+        Facture result = instance.emettreFacture(idRecepteur, montant);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
-    }*/
-
+    }
+*/
+   
+    /**
+     * Test of ajouterCompte method, of class Utilisateur.
+     */
+    @Test
+    public void testAjouterCompte() {
+        System.out.println("ajouterCompte");
+        Compte nouveauCompte = new Compte(12.9887, null, 3);
+        //Utilisateur instance = new Utilisateur();
+        /*int expResult = 0;
+        int result = instance.ajouterCompte(nouveauCompte);
+        assertEquals(expResult, result); */
+    }
+    
+    @Test
+    public void testSupprimerMonCompte(){
+        System.out.println("Supprmer compte");
+        Utilisateur instance = new Utilisateur();
+        Compte newCpte = new Compte(12.90, null, 1); 
+        instance.ajouterCompte(newCpte);
+        Compte newCpte2 = new Compte(12.90, null, 2); 
+        instance.ajouterCompte(newCpte2);
+        int expected=0; 
+        int result = instance.supprimerMonCompte(1);
+        assertEquals(expected, result);
+    }
     
 }
