@@ -153,13 +153,14 @@ public class Utilisateur  {
         }
         return 0;
     }
-
+        
     /**
      *
      * @param nouveauCompte
      * @return  0 : Success
      *          -1 : Fail
      */
+    
     public int ajouterCompte(Compte nouveauCompte){
         int a = this._mesComptes.ajouterCompte(nouveauCompte);
         if(a!=0){return -1;}
