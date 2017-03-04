@@ -36,8 +36,14 @@ public class Main extends Application {
 
     /* Fenetre de login */
     private Login loginScene;
+    private Accueil accueilScene;
+    /*Fenetre de création de compte */
+    private CreateAccount createAccountScene;
+    
     /* Etat du login */
     private BooleanProperty loginState;
+    private BooleanProperty createAccountState;
+    private BooleanProperty welcomeState;
     
     /* Fenetre de travail */
     private MainScreen mainScreen;
@@ -61,17 +67,34 @@ public class Main extends Application {
         /* Création d'une liste d'utilisateur */
         lu = new ListeUtilisateurs();
         lu.ajouter(new Utilisateur(1001, "DOREAU", "Clément", "test", "Paris", 1));
-
-        /* Si l'utilisateur n'est pas loggué */
+        
+        welcomeState.setValue(false);
+        
+        /*Afficer la page d'accueil */ 
+        if(welcomeState == null){
+        accueilScene = new Accueil();
+        args.setScene(accueilScene);
+        welcomeState=accueilScene.getwWelcomeState();
+        }
+        
+        /* Si l'utilisateur veut se logger pas loggué */
         /* On ouvre la fenêtre de login avec la liste à tester */
-        if (loginState == null) {
-            /* Fenetre de login */
+        if ((welcomeState.get() == false) && loginState==null) {
+            // Fenetre de login 
             loginScene = new Login();
             loginScene.setList(lu);
             loginState = loginScene.getLoginState();
             loginState.addListener(loginListener);
             args.setScene(loginScene);
             
+        }
+        
+        // Si l'utilisateur veut créer un compte 
+        if((welcomeState.get() == true) && createAccountState == null){
+            // Fenêtre de création de compte 
+            createAccountScene = new CreateAccount(); 
+            //createAccountScene.setList(lu);
+            createAccountState = createAccountScene.getCreateAccountState(); 
         }
 
         args.setTitle("Bienvenu sur BestGest ! ");
