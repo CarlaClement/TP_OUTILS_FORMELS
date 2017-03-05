@@ -93,7 +93,7 @@ public class Main extends Application {
             args.setScene(loginScene);
             
         }
-        
+        /*
         // Si l'utilisateur veut créer un compte 
         else if(nextState == 2){
            // Fenêtre de création de compte 
@@ -101,7 +101,7 @@ public class Main extends Application {
             args.setScene(createAccountScene);
             createAccountScene.setList(lu);
             createAccountState = createAccountScene.getCreateAccountState(); 
-        }
+        }*/
         args.setTitle("Bienvenu sur BestGest ! ");
         MainStage.show();
 
