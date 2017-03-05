@@ -30,10 +30,13 @@ public class CreateAccount extends Scene {
    private Label lblNom;
    private Label lblPrenom;
    private Label lblAdresse;
-   
+   private Label lblRole;
+   private Label lblMdp;
    private TextField inputNom; 
    private TextField inputPrenom; 
    private TextField inputAdresse; 
+   private TextField inputRole; 
+   private TextField inputMdp; 
    
    private Button btSubmit;
    
@@ -47,18 +50,20 @@ public class CreateAccount extends Scene {
         Pane item = new Pane(); // Item extends Pane.
         
         /* Initialisation des labels */
-        lblNom = new Label("Nom:");
-        lblPrenom = new Label("Prénom:");
-        lblAdresse = new Label("Adresse:");
-        
+        lblNom      = new Label("Nom:");
+        lblPrenom   = new Label("Prénom:");
+        lblAdresse  = new Label("Adresse:");
+        lblRole     = new Label("Role: (0 pour commerçant, 1 pour Comptable)");
+        lblMdp      = new Label("Mot de passe "); 
          /* Initialisation des inputs */
-        btSubmit = new Button("Créer un compte");
-        inputNom = new TextField();
-        inputPrenom =new TextField();
-        inputAdresse = new TextField();
-        
+        btSubmit        = new Button("Créer un compte");
+        inputNom        = new TextField();
+        inputPrenom     = new TextField();
+        inputAdresse    = new TextField();
+        inputRole       = new TextField();
+        inputMdp        = new TextField();
        /* Inscription du listener à un appui*/
-      //  btSubmit.setOnAction(listener);
+        btSubmit.setOnAction(listener);
         
        ((VBox)getRoot()).getChildren().add(item);
         // Ajout des components sur la scene 
@@ -68,19 +73,77 @@ public class CreateAccount extends Scene {
         ((VBox)getRoot()).getChildren().add(inputPrenom);
         ((VBox)getRoot()).getChildren().add(lblAdresse);
         ((VBox)getRoot()).getChildren().add(inputAdresse);
+        ((VBox)getRoot()).getChildren().add(lblRole);
+        ((VBox)getRoot()).getChildren().add(inputRole);
+        ((VBox)getRoot()).getChildren().add(lblMdp);
+        ((VBox)getRoot()).getChildren().add(inputMdp);
         ((VBox)getRoot()).getChildren().add(btSubmit);
                
     }
    
+   public BooleanProperty getCreateAccountState(){
+       return isCreated;
+   }
+   
+   public String getNom(){
+       return inputNom.getText();
+   }
+   public String getPrenom(){
+       return inputPrenom.getText();
+   }
+   public String getAdresse(){
+       return inputAdresse.getText();
+   }
+   public String getRole(){
+       return inputRole.getText();
+   }
+   public void setList(ListeUtilisateurs l){
+        lu = l;
+    }
+    public String getMdp(){
+       return inputMdp.getText();
+   }
+    
+   public int creerCpte(){
+       String nom = getNom();
+       if(nom.length()<=2){ 
+           System.out.println(" return creer cpte : nom trop court");
+           return -1;
+       }
+       String prenom = getPrenom();
+       if(prenom.length()<=2){
+           System.out.println(" return creer cpte : prenom trop court");
+           return -2;
+       }
+       String adresse = getAdresse();
+       if(adresse.length()<=2){
+          System.out.println(" return creer cpte :  adr trop courte");
+           return -3;
+        }
+        int role = Integer.parseInt(getRole());  
+        if(role != 0 && role !=1){
+           // ERREUR
+           System.out.println(" return creer cpte : Mauvais role" );
+           return -4;  
+        }
+        String mdp = getMdp();
+        if(mdp.length()<=4){
+            System.out.println(" return creer cpte :  Mvais mdp");
+            return -5;
+        }
+      // setList(lu);
+       int index = lu.nbUtilisateurs();
+       Utilisateur user = new Utilisateur(index-1,nom,prenom,mdp,adresse,role);
+       lu.ajouter(user);
+      return 0;
+   }
+   
    EventHandler<ActionEvent> listener = (ActionEvent event) -> {
         if(event.getSource() == btSubmit){     
             System.out.println("Demande de création de compte");
+            creerCpte();
         }
         
    };
    
-   public BooleanProperty getCreateAccountState(){
-       return isCreated;
-   }
 }
-

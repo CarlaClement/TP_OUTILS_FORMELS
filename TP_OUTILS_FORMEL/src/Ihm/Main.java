@@ -44,6 +44,7 @@ public class Main extends Application {
     private BooleanProperty loginState;
     private BooleanProperty createAccountState;
     private BooleanProperty welcomeState;
+    private int nextState =0;
     
     /* Fenetre de travail */
     private MainScreen mainScreen;
@@ -67,19 +68,18 @@ public class Main extends Application {
         /* Création d'une liste d'utilisateur */
         lu = new ListeUtilisateurs();
         lu.ajouter(new Utilisateur(1001, "DOREAU", "Clément", "test", "Paris", 1));
-        
-        welcomeState.setValue(false);
-        
-        /*Afficer la page d'accueil */ 
+               lu.ajouter(new Utilisateur(2, "YOYOTTE", "Carla", "Mdp", "Tours", 0));
+        /*Afficer la page d'accueil */
         if(welcomeState == null){
         accueilScene = new Accueil();
+        welcomeState=accueilScene.getWelcomeState();
+        welcomeState.addListener(welcomeListener);
+        nextState=accueilScene.getToNextState();
         args.setScene(accueilScene);
-        welcomeState=accueilScene.getwWelcomeState();
         }
-        
         /* Si l'utilisateur veut se logger pas loggué */
         /* On ouvre la fenêtre de login avec la liste à tester */
-        if ((welcomeState.get() == false) && loginState==null) {
+        if (nextState == 1 ) {
             // Fenetre de login 
             loginScene = new Login();
             loginScene.setList(lu);
@@ -90,15 +90,14 @@ public class Main extends Application {
         }
         
         // Si l'utilisateur veut créer un compte 
-        if((welcomeState.get() == true) && createAccountState == null){
-            // Fenêtre de création de compte 
+        else if(nextState == 2){
+           // Fenêtre de création de compte 
             createAccountScene = new CreateAccount(); 
-            //createAccountScene.setList(lu);
+            args.setScene(createAccountScene);
+            createAccountScene.setList(lu);
             createAccountState = createAccountScene.getCreateAccountState(); 
         }
-
         args.setTitle("Bienvenu sur BestGest ! ");
-
         MainStage.show();
 
     }
@@ -110,6 +109,17 @@ public class Main extends Application {
             mainScreen = new MainScreen();
             MainStage.setScene(mainScreen);
             mainScreen.setCurrentUser(lu.get(loginScene.getUserId()-1000));
+            MainStage.show();
+        }
+    };
+    
+    ChangeListener<Boolean> welcomeListener = new ChangeListener<Boolean>() {
+        @Override
+        public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+            System.out.println("Main : Create account");
+            createAccountScene = new CreateAccount();
+            MainStage.setScene(createAccountScene);
+            //createAccountScene.setCurrentUser(lu.get(loginScene.getUserId()-1000));
             MainStage.show();
         }
     };

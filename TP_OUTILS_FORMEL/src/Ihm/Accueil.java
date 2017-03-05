@@ -35,7 +35,7 @@ public class Accueil extends Scene {
     private Button btCreateAccount;         /* Bouton pour créer un compte */
     private Label lblAccueil;
     private BooleanProperty welcomeState;
-    //private BooleanProperty toCreateAccount;
+    private int nextState;
     
     public Accueil(){
         super(new VBox(10), 800, 600);
@@ -45,8 +45,7 @@ public class Accueil extends Scene {
         welcomeState.set(false);
         
         /* toLogin à False */
-       // toLogin = new SimpleBooleanProperty();
-        //toLogin.set(false);
+        int nextState =0;
         
         System.out.println("ACCUEIL : Init");
         Pane item = new Pane(); // Item extends Pane.
@@ -67,23 +66,28 @@ public class Accueil extends Scene {
         ((VBox)getRoot()).getChildren().add(btLogin);
     }
     
-    public BooleanProperty getwWelcomeState(){
+    public BooleanProperty getWelcomeState(){
         return welcomeState;
     }
-   /* public BooleanProperty getGoToCreateState(){
-        return toCreateAccount;
-    }*/
+    public int getToNextState(){
+        return nextState;
+    }
     /**
      * Listener des actions sur boutons
      */
     EventHandler<ActionEvent> listener = (ActionEvent event) -> {
         if(event.getSource() == btCreateAccount){     
             System.out.println("ACCUEIL : Appui sur bouton Créer un nouveau compte");
+            nextState=1;
             welcomeState.set(true);
+            System.out.println("ACCUEIL : nextState = "+nextState);
+            System.out.println("ACCUEIL : accueil = "+welcomeState.get());
         }
         if(event.getSource() == btLogin){  
             System.out.println("ACCUEIL : Appui sur bouton Se logger");
-            welcomeState.set(false);
+            nextState=2;
+            welcomeState.set(true);
+            System.out.println("ACCUEIL : nextState = "+nextState);
         }
     };
 }

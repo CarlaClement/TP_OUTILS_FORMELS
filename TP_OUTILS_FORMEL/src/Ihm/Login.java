@@ -88,9 +88,7 @@ public class Login extends Scene{
         return isLogged;
     }
     
-    public BooleanProperty getCreateAccount(){
-        return createAccount;
-    }
+   
     
     public void setList(ListeUtilisateurs l){
         lu = l;
@@ -99,9 +97,10 @@ public class Login extends Scene{
     public int getUserId(){
         return Integer.parseInt(inputUsername.getText());
     }
-    final Alert alerte = new Alert(Alert.AlertType.CONFIRMATION);
+    //final Alert alerte = new Alert(Alert.AlertType.CONFIRMATION);
     //alerte.initOwner(stage);
     //alert.setContentText(" Mot de passe erroné ! ");
+    
     /**
      * Listener des actions sur boutons
      */
@@ -122,8 +121,6 @@ public class Login extends Scene{
                     break;                    
             }
         }
-        if(event.getSource()== btCreateAccount){
-            createAccount.set(true);
-        }
+        
     };
 }

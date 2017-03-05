@@ -67,6 +67,7 @@ public class Utilisateur  {
         this._adresse = _adresse;
         this._role = _role;
          _monDossier=null;
+         
     }
 
 
