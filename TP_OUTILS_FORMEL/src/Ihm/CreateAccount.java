@@ -5,6 +5,7 @@
  */
 package Ihm;
 
+import java.util.ArrayList;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.ActionEvent;
@@ -131,10 +132,13 @@ public class CreateAccount extends Scene {
             System.out.println(" return creer cpte :  Mvais mdp");
             return -5;
         }
-      // setList(lu);
+       setList(lu);
        int index = lu.nbUtilisateurs();
-       Utilisateur user = new Utilisateur(index-1,nom,prenom,mdp,adresse,role);
-       lu.ajouter(user);
+       
+       //System.out.println("taille liste " + index);
+       //Utilisateur user = new Utilisateur(index-1,nom,prenom,mdp,adresse,role);
+       
+       //lu.ajouter(user);
       return 0;
    }
    

@@ -86,28 +86,16 @@ public class ListeUtilisateursTest {
     @Test
     public void testSupprimer() {
         System.out.println("supprimer");
-        Utilisateur u = new Utilisateur(3, "tt", "cc", null, 1);
-        ListeUtilisateurs instance = new ListeUtilisateurs();
-        instance.ajouter(u);
+        Utilisateur u = new Utilisateur(1, "tt", "cc", null, 1);
+        Utilisateur u1 = new Utilisateur(2, "tDt", "cDc", null, 0);
+        ArrayList<Utilisateur> liste=new ArrayList<>();
+        liste.add(u);
+        liste.add(u1);
+        ListeUtilisateurs instance = new ListeUtilisateurs(liste);
+        //instance.ajouter(u);
+        instance.ajouter(u1);
         int expResult = 0;
-        int result = instance.supprimer(u);
+        int result = instance.supprimer(u1);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
     }
-
-    /**
-     * Test of nbUtilisateurs method, of class ListeUtilisateurs.
-     */
-    @Test
-    public void testNbUtilisateurs() {
-        System.out.println("nbUtilisateurs");
-        ListeUtilisateurs instance = new ListeUtilisateurs();
-        int expResult = 0;
-        int result = instance.nbUtilisateurs();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-    
 }

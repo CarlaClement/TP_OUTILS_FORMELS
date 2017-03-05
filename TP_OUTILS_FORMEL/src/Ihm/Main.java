@@ -5,6 +5,7 @@
  */
 package Ihm;
 
+import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.value.ChangeListener;
@@ -66,9 +67,13 @@ public class Main extends Application {
         
         /* TEMPORAIRE */
         /* Création d'une liste d'utilisateur */
-        lu = new ListeUtilisateurs();
-        lu.ajouter(new Utilisateur(1001, "DOREAU", "Clément", "test", "Paris", 1));
-               lu.ajouter(new Utilisateur(2, "YOYOTTE", "Carla", "Mdp", "Tours", 0));
+        
+        ArrayList<Utilisateur> liste=new ArrayList<>();
+        liste.add(new Utilisateur(1001, "DOREAU", "Clément", "test", "Paris", 1));
+        liste.add(new Utilisateur(2, "YOYOTTE", "Carla", "Mdp", "Tours", 0));
+        lu = new ListeUtilisateurs(liste);
+        int index = lu.nbUtilisateurs();
+       System.out.println("taille liste " + index);
         /*Afficer la page d'accueil */
         if(welcomeState == null){
         accueilScene = new Accueil();

@@ -21,7 +21,7 @@ public class ListeUtilisateurs {
      */
     
     public ListeUtilisateurs(){
-        _listeUtilisateurs = new ArrayList<>(0);
+        _listeUtilisateurs = new ArrayList<>();
     }
     
     
